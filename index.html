@@ -1,0 +1,227 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!--强制让文档的宽度与设备的宽度保持1:1，并且文档最大的宽度比例是1.0，且不允许用户点击屏幕放大浏览；-->
+
+    <meta content="yes" name="apple-mobile-web-app-capable">
+
+    <!--iphone设备中的safari私有meta标签，它表示：允许全屏模式浏览-->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+
+    <!--iphone的私有标签，它指定的iphone中safari顶端的状态条的样式-->
+
+
+    <title>问卷调查</title>
+    <link rel="stylesheet" href="./css/index.css">
+
+    <script type="text/javascript">
+        //引入该flexible.min.js
+        !function (e, t) { function n() { var n = l.getBoundingClientRect().width; t = t || 540, n > t && (n = t); var i = 100 * n / e; r.innerHTML = "html{font-size:" + i + "px;}" } var i, d = document, o = window, l = d.documentElement, r = document.createElement("style"); if (l.firstElementChild) l.firstElementChild.appendChild(r); else { var a = d.createElement("div"); a.appendChild(r), d.write(a.innerHTML), a = null } n(), o.addEventListener("resize", function () { clearTimeout(i), i = setTimeout(n, 300) }, !1), o.addEventListener("pageshow", function (e) { e.persisted && (clearTimeout(i), i = setTimeout(n, 300)) }, !1), "complete" === d.readyState ? d.body.style.fontSize = "16px" : d.addEventListener("DOMContentLoaded", function (e) { d.body.style.fontSize = "16px" }, !1) }(750, 750);
+    </script>
+    <!--  动态查询屏幕宽度的js -->
+
+    <!--  <script src="http://ggtf.sunland.org.cn/statistics/sunlandsLog.js"></script> -->
+    <!--  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> -->
+    <link href="https://fonts.proxy.ustclug.org/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <section id="app" class="part1 clearfix">
+        <div class="header">
+            <!-- 大都会标题 -->
+            <div class="logo">
+                <img src="./images/metlife.png">
+            </div>
+        </div>
+        <div class="banner">
+            <!-- banner图 -->
+            <span class="title1">我们的客户价值主张</span>
+            <span class="title2">全球保障，与您知心同行</span>
+            <div class="logo">
+                <img src="./images/banner.png">
+            </div>
+        </div>
+        <div class="erwei_box">
+            <!-- 二维码区域 -->
+            <div class="wen_juan">
+                <span class="title1">大都会人寿</span>
+                <span class="title2">问卷调研</span>
+            </div>
+            <div class="er_wei_ma">
+                <img src="./images/er_wei_ma.png">
+            </div>
+        </div>
+        <div class="content">
+            <div class="card">
+                <!-- 白色卡片区域 -->
+                <div class="card_content">
+                    <div class="blue_box">
+                        <div class="blue_icon">
+
+                        </div>
+                        <div class="blue_title">
+                            调查问卷
+                        </div>
+                    </div>
+                    <div class="question_box mg16">
+                        <div class="left red_star">Q1</div>
+                        <div class="right">基于寿险规划师XXX的服务，您向朋友推荐大都会的可能性有多大？（10-0，10=极有可能推荐，0=不推荐）</div>
+                    </div>
+
+                    <div class="step_box">
+                        <div class="click_box">
+                            <div :style="{opacity:chooseStep==item-1?1:0}" v-for="item in 11" :key="item"
+                                @click="clickStep(item-1)" class="click_item">
+                                <span>{{(item-1!=0&&item-1!=10)?item-1:''}}</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="50%" height="50%" viewBox="0 0 15 15" version="1.1">
+                                    <title>椭圆形</title>
+                                    <defs>
+                                        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                                            <stop stop-color="#EEEEEE" offset="0%" />
+                                            <stop stop-color="#D8D8D8" offset="100%" />
+                                        </linearGradient>
+                                    </defs>
+                                    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="问卷备份-3" transform="translate(-156.000000, -468.000000)"
+                                            fill="url(#linearGradient-1)" stroke="#0090DA" stroke-width="2">
+                                            <g id="编组-3" transform="translate(34.000000, 446.000000)">
+                                                <circle id="椭圆形" cx="129.5" cy="29.5" r="6.5" />
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="left"></div>
+                            <div class="right"></div>
+                        </div>
+                    </div>
+                    <div class="question_box mg16">
+                        <div class="left">Q2</div>
+                        <div class="right">请问您给出以上评价的原因是什么？</div>
+                    </div>
+                    <textarea :maxlength="200" class="input_text" placeholder="此项字数限制0-200个字符以内"></textarea>
+                    <div class="question_box mg16">
+                        <div class="left red_star">Q3</div>
+                        <div class="right">请您评价与大都会寿险规划师XXX的沟通满意度。</div>
+                    </div>
+                    <div class="select_box">
+                        <div v-for="(item) in list" :key="item.value" class="input_box">
+                            <input @change="chooseRadio(item)" type="radio" name="manyi1">
+                            <span>{{item.title}}</span>
+                        </div>
+                    </div>
+                    <div v-if="[5].includes(chooseValue)" class="sorry_msg">
+                        抱歉，我们会安排寿险规划师XXX尽快联系您。
+                    </div>
+                    <div v-if="[3,4].includes(chooseValue)" class="question_box mg16">
+
+                        <div class="right">您建议寿险规划师XXX应该专注于哪些方面的服务提升，以便提供更专业的服务？</div>
+
+                    </div>
+                    <textarea :maxlength="200" v-if="[3,4].includes(chooseValue)" class="input_text"
+                        placeholder="此项字数限制0-200个字符以内"></textarea>
+                    <div class="question_box mg16">
+                        <div class="left">Q4</div>
+                        <div class="right">请问您有哪些寿险解决方案方面的关注以便我们更好地满足您的需求？</div>
+                    </div>
+                    <textarea :maxlength="200" class="input_text" placeholder="此项字数限制0-200个字符以内"></textarea>
+                </div>
+            </div>
+            <!--  <div class="bottom_btn" @click="submit">提交</div> -->
+            <button class="btn" @click="submit">提交</button>
+            <transition name="fade">
+                <div v-if="showToast" class="toast_box"></div>
+            </transition>
+
+        </div>
+
+
+    </section>
+
+
+
+</body>
+<script src="./js/index.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> -->
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.10/vue.min.js" rel="stylesheet" type="text/javascript"></script>
+<!-- <script src="http://ggtf.sunland.org.cn/statistics/interactive.js"></script> -->
+<!-- <script src="./js/jquery.min.js"></script> -->
+
+<!-- <script>
+    interactive.init('xiaoneng')
+    $('#a1,#a2,#a3,#a4,#a5,#a6,#a7,#a8,#a9,#a10,#a10,#a11,#a12,#a13,#a14,#a15,#a16,#a17,#a18,#a19,#a20,#a21,#a22,#a23,#a24,#a25,#a26,#a27,#a28,#a29,#a30,#a31,#a32,#a33,#a34,#a35,#a36,#a37,#a38').click(function (e) {    //用小能发起按钮的ID替换more
+        interactive.openNtkf(e)
+    })
+
+</script> -->
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                showToast: false,
+                msg: "Hello world!",
+                chooseValue: 0,
+                chooseStep: undefined,
+                list: [
+                    { value: 1, title: "非常满意" },
+                    { value: 2, title: "满意" },
+                    { value: 3, title: "不满意" },
+                    { value: 4, title: "非常不满意" },
+                    { value: 5, title: "无人联系" }
+                ]
+            }
+        },
+        methods: {
+            chooseRadio(item) {
+                console.log("item", item, this.msg);
+                this.chooseValue = item.value;
+            },
+            clickStep(item) {
+                console.log("item1", item);
+                this.chooseStep = item;
+                /*  e.preventDefault();
+                 e.stopPropagation();
+                 const width = e.target.clientWidth;
+                 const left = e.target.offsetLeft;
+                 console.log("e", e, width, left, e.target.offsetLeft, e.target.classList.contains("step")); */
+            },
+            submit() {
+                if (this.showToast) return false;
+                this.showToast = true;
+                setTimeout(() => { this.showToast = false }, 2000)
+                console.log("点击了确认");
+                let options = {
+                    method: 'POST',//post请求
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({//post请求参数
+                        name: 'Hubot',
+                        login: 'hubot',
+                    })
+                }
+                //新建一个fetch请求
+                fetch('/users', options).then((res) => {
+                    if (res.ok) {
+
+                    } else {
+
+                    }
+                })
+
+            }
+        }
+    });
+</script>
+
+</html>
