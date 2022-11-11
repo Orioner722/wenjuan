@@ -70,7 +70,7 @@
                     </div>
                     <div class="question_box mg16">
                         <div class="left red_star">Q1</div>
-                        <div class="right">基于寿险规划师XXX的服务，您向朋友推荐大都会的可能性有多大？（10-0，10=极有可能推荐，0=不推荐）</div>
+                        <div class="right">基于寿险规划师XXX的服务，您向朋友推荐大都会的可能性有多大？（ 10表示极有可能推荐，0表示不推荐）</div>
                     </div>
 
                     <div class="step_box">
@@ -107,7 +107,7 @@
                         <div class="left">Q2</div>
                         <div class="right">请问您给出以上评价的原因是什么？</div>
                     </div>
-                    <textarea :maxlength="200" class="input_text" placeholder="此项字数限制0-200个字符以内"></textarea>
+                    <textarea :maxlength="200" class="input_text" placeholder="此项字数限制200个字符以内"></textarea>
                     <div class="question_box mg16">
                         <div class="left red_star">Q3</div>
                         <div class="right">请您评价与大都会寿险规划师XXX的沟通满意度。</div>
@@ -127,12 +127,12 @@
 
                     </div>
                     <textarea :maxlength="200" v-if="[3,4].includes(chooseValue)" class="input_text"
-                        placeholder="此项字数限制0-200个字符以内"></textarea>
+                        placeholder="此项字数限制200个字符以内"></textarea>
                     <div class="question_box mg16">
                         <div class="left">Q4</div>
                         <div class="right">请问您有哪些寿险解决方案方面的关注以便我们更好地满足您的需求？</div>
                     </div>
-                    <textarea :maxlength="200" class="input_text" placeholder="此项字数限制0-200个字符以内"></textarea>
+                    <textarea :maxlength="200" class="input_text" placeholder="此项字数限制200个字符以内"></textarea>
                 </div>
             </div>
             <!--  <div class="bottom_btn" @click="submit">提交</div> -->
